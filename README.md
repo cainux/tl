@@ -12,6 +12,8 @@ Start the container with:
 docker run --rm -it -p 5000:80 $(docker build -q .)
 ```
 
+## Usage
+
 I've added a swagger interface at:
 
 - http://localhost:5000/swagger
@@ -21,7 +23,7 @@ Or you can just browse to the various URLs:
 - http://localhost:5000/pokemon/mewtwo
 - http://localhost:5000/pokemon/translated/mewtwo
 
-## Further Enhancements
+## Further Enhancements to Consider
 
 - Polly, for request retries
 - Caching
