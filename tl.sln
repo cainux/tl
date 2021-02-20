@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02A01696-2ED3-47AF-92E2-0981ED51F033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TL.Pokedex", "src\TL.Pokedex\TL.Pokedex.csproj", "{F80F196D-F1C5-4E14-BCB5-4AF3B4DE3CA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TL.Pokedex.Core", "src\TL.Pokedex.Core\TL.Pokedex.Core.csproj", "{F80F196D-F1C5-4E14-BCB5-4AF3B4DE3CA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{00BEAA1D-0620-45E4-A7A2-A7F3AE7CC9F1}"
 EndProject
