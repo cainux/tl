@@ -12,6 +12,8 @@ Start the container with:
 docker run --rm -it -p 5000:80 $(docker build -q .)
 ```
 
+Give it some time to run. Unit tests are run as part of the build.
+
 ## Usage
 
 I've added a swagger interface at:
