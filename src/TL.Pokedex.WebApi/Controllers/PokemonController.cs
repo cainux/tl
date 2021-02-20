@@ -20,12 +20,12 @@ namespace TL.Pokedex.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("translated/{name}")]
-        public async Task<IActionResult> GetTranslated([FromRoute] string name)
+        [Route("{name}")]
+        public async Task<IActionResult> Get([FromRoute] string name)
         {
-            _logger.LogDebug("Getting Translated {PokemonName}", name);
+            _logger.LogDebug("Getting {PokemonName}", name);
 
-            var monster = await _pokemonService.GetTranslatedAsync(name);
+            var monster = await _pokemonService.GetAsync(name);
 
             if (monster == null)
             {
@@ -36,12 +36,12 @@ namespace TL.Pokedex.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("{name}")]
-        public async Task<IActionResult> Get([FromRoute] string name)
+        [Route("translated/{name}")]
+        public async Task<IActionResult> GetTranslated([FromRoute] string name)
         {
-            _logger.LogDebug("Getting {PokemonName}", name);
+            _logger.LogDebug("Getting Translated {PokemonName}", name);
 
-            var monster = await _pokemonService.GetAsync(name);
+            var monster = await _pokemonService.GetTranslatedAsync(name);
 
             if (monster == null)
             {
