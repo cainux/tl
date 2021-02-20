@@ -6,7 +6,7 @@ using TL.Pokedex.Core.Interfaces;
 namespace TL.Pokedex.WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("pokemon")]
     [Produces("application/json")]
     public class PokemonController : ControllerBase
     {
