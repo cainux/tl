@@ -38,6 +38,8 @@ namespace TL.Pokedex.Core
 
             public interface IYoda : ITranslator { }
             public interface IWilliamShakespeare : ITranslator { }
+
+            public class TranslationException : Exception { }
         }
     }
 
@@ -69,12 +71,36 @@ namespace TL.Pokedex.Core
 
             public async Task<PocketMonster> GetAsync(string name)
             {
-                throw new NotImplementedException();
+                return await _repository.GetAsync(name);
             }
 
             public async Task<PocketMonster> GetTranslatedAsync(string name)
             {
-                throw new NotImplementedException();
+                var monster = await _repository.GetAsync(name);
+
+                if (monster == null)
+                {
+                    return null;
+                }
+
+                try
+                {
+                    if (string.Equals(monster.Habitat, "cave", StringComparison.InvariantCultureIgnoreCase)
+                        || monster.IsLegendary)
+                    {
+                        monster.Description = await _yoda.GetTranslationAsync(monster.Description);
+                    }
+                    else
+                    {
+                        monster.Description = await _williamShakespeare.GetTranslationAsync(monster.Description);
+                    }
+                }
+                catch (TranslationException e)
+                {
+                    _logger.LogWarning(e, "Error occurred when getting translation for {Pokémon}", name);
+                }
+
+                return monster;
             }
         }
     }

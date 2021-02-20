@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{00BEAA1D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{37BD564F-4085-4A5B-A5E9-C82BA935D37D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TL.Pokedex.Unit.Tests", "tests\unit\TL.Pokedex.Unit.Tests\TL.Pokedex.Unit.Tests.csproj", "{6ED63765-BE1B-4DD9-B8BE-C14DAA982D4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TL.Pokedex.Core.UnitTests", "tests\unit\TL.Pokedex.Core.UnitTests\TL.Pokedex.Core.UnitTests.csproj", "{6ED63765-BE1B-4DD9-B8BE-C14DAA982D4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
