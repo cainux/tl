@@ -10,12 +10,12 @@ namespace TL.Pokedex.WebApi.Controllers
     [Produces("application/json")]
     public class PokemonController : ControllerBase
     {
-        private readonly IPocketMonsterService _pocketMonsterService;
+        private readonly IPokemonService _pokemonService;
         private readonly ILogger<PokemonController> _logger;
 
-        public PokemonController(IPocketMonsterService pocketMonsterService, ILogger<PokemonController> logger)
+        public PokemonController(IPokemonService pokemonService, ILogger<PokemonController> logger)
         {
-            _pocketMonsterService = pocketMonsterService;
+            _pokemonService = pokemonService;
             _logger = logger;
         }
 
@@ -25,7 +25,7 @@ namespace TL.Pokedex.WebApi.Controllers
         {
             _logger.LogDebug("Getting Translated {PokemonName}", name);
 
-            var monster = await _pocketMonsterService.GetTranslatedAsync(name);
+            var monster = await _pokemonService.GetTranslatedAsync(name);
 
             if (monster == null)
             {
@@ -41,7 +41,7 @@ namespace TL.Pokedex.WebApi.Controllers
         {
             _logger.LogDebug("Getting {PokemonName}", name);
 
-            var monster = await _pocketMonsterService.GetAsync(name);
+            var monster = await _pokemonService.GetAsync(name);
 
             if (monster == null)
             {

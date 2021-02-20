@@ -9,26 +9,26 @@ using Xunit;
 
 namespace TL.Pokedex.Core.UnitTests
 {
-    public class Get_PocketMonster
+    public class Get_Pokemon
     {
         private readonly AutoMocker _mocker;
-        private readonly PocketMonsterService SUT;
+        private readonly PokemonService SUT;
 
-        public Get_PocketMonster()
+        public Get_Pokemon()
         {
             _mocker = new AutoMocker();
-            SUT = _mocker.CreateInstance<PocketMonsterService>();
+            SUT = _mocker.CreateInstance<PokemonService>();
         }
 
         [Fact]
-        public async Task Returns_PocketMonster_When_Found()
+        public async Task Returns_Pokemon_When_Found()
         {
             // Arrange
             const string name = "mewtwo";
 
-            _mocker.GetMock<IPocketMonsterRepository>()
+            _mocker.GetMock<IPokemonRepository>()
                 .Setup(x => x.GetAsync(name))
-                .ReturnsAsync(new PocketMonster
+                .ReturnsAsync(new Pokemon
                 {
                     Name = name,
                     Description = "description",

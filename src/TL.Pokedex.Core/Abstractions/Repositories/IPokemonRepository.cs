@@ -3,8 +3,8 @@ using TL.Pokedex.Core.Entities;
 
 namespace TL.Pokedex.Core.Abstractions.Repositories
 {
-    public interface IPocketMonsterRepository
+    public interface IPokemonRepository
     {
-        Task<PocketMonster> GetAsync(string name);
+        Task<Pokemon> GetAsync(string name);
     }
 }

@@ -32,8 +32,8 @@ namespace TL.Pokedex.WebApi.UnitTests
                         })
                         .ConfigureTestServices(services =>
                         {
-                            services.RemoveAll<IPocketMonsterService>();
-                            services.AddSingleton(Mocker.GetMock<IPocketMonsterService>().Object);
+                            services.RemoveAll<IPokemonService>();
+                            services.AddSingleton(Mocker.GetMock<IPokemonService>().Object);
                         });
                 });
         }

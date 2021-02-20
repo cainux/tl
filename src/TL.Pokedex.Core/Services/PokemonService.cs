@@ -8,14 +8,14 @@ using TL.Pokedex.Core.Interfaces;
 
 namespace TL.Pokedex.Core.Services
 {
-    public class PocketMonsterService : IPocketMonsterService
+    public class PokemonService : IPokemonService
     {
-        private readonly IPocketMonsterRepository _repository;
+        private readonly IPokemonRepository _repository;
         private readonly IYoda _yoda;
         private readonly IWilliamShakespeare _williamShakespeare;
-        private readonly ILogger<PocketMonsterService> _logger;
+        private readonly ILogger<PokemonService> _logger;
 
-        public PocketMonsterService(IPocketMonsterRepository repository, IYoda yoda, IWilliamShakespeare williamShakespeare, ILogger<PocketMonsterService> logger)
+        public PokemonService(IPokemonRepository repository, IYoda yoda, IWilliamShakespeare williamShakespeare, ILogger<PokemonService> logger)
         {
             _repository = repository;
             _yoda = yoda;
@@ -23,12 +23,12 @@ namespace TL.Pokedex.Core.Services
             _logger = logger;
         }
 
-        public async Task<PocketMonster> GetAsync(string name)
+        public async Task<Pokemon> GetAsync(string name)
         {
             return await _repository.GetAsync(name);
         }
 
-        public async Task<PocketMonster> GetTranslatedAsync(string name)
+        public async Task<Pokemon> GetTranslatedAsync(string name)
         {
             var monster = await _repository.GetAsync(name);
 

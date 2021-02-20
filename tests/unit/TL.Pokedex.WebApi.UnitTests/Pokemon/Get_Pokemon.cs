@@ -30,9 +30,9 @@ namespace TL.Pokedex.WebApi.UnitTests.Pokemon
             // Arrange
             const string name = "mewtwo";
 
-            _mocker.GetMock<IPocketMonsterService>()
+            _mocker.GetMock<IPokemonService>()
                 .Setup(x => x.GetAsync(It.IsAny<string>()))
-                .ReturnsAsync(new PocketMonster());
+                .ReturnsAsync(new Core.Entities.Pokemon());
 
             // Act
             var actual = await SUT.GetAsync($"/pokemon/{name}");

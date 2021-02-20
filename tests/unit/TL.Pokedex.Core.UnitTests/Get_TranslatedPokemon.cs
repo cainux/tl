@@ -10,15 +10,15 @@ using Xunit;
 
 namespace TL.Pokedex.Core.UnitTests
 {
-    public class Get_TranslatedPocketMonster
+    public class Get_TranslatedPokemon
     {
         private readonly AutoMocker _mocker;
-        private readonly PocketMonsterService SUT;
+        private readonly PokemonService SUT;
 
-        public Get_TranslatedPocketMonster()
+        public Get_TranslatedPokemon()
         {
             _mocker = new AutoMocker();
-            SUT = _mocker.CreateInstance<PocketMonsterService>();
+            SUT = _mocker.CreateInstance<PokemonService>();
 
             _mocker.GetMock<IYoda>()
                 .Setup(x => x.GetTranslationAsync(It.IsAny<string>()))
@@ -35,9 +35,9 @@ namespace TL.Pokedex.Core.UnitTests
             // Arrange
             const string name = "mewtwo";
 
-            _mocker.GetMock<IPocketMonsterRepository>()
+            _mocker.GetMock<IPokemonRepository>()
                 .Setup(x => x.GetAsync(name))
-                .ReturnsAsync(new PocketMonster
+                .ReturnsAsync(new Pokemon
                 {
                     Name = name,
                     Description = "description"
@@ -60,9 +60,9 @@ namespace TL.Pokedex.Core.UnitTests
             // Arrange
             const string name = "mewtwo";
 
-            _mocker.GetMock<IPocketMonsterRepository>()
+            _mocker.GetMock<IPokemonRepository>()
                 .Setup(x => x.GetAsync(name))
-                .ReturnsAsync(new PocketMonster
+                .ReturnsAsync(new Pokemon
                 {
                     Name = name,
                     Description = "description",
@@ -87,9 +87,9 @@ namespace TL.Pokedex.Core.UnitTests
             // Arrange
             const string name = "mewtwo";
 
-            _mocker.GetMock<IPocketMonsterRepository>()
+            _mocker.GetMock<IPokemonRepository>()
                 .Setup(x => x.GetAsync(name))
-                .ReturnsAsync(new PocketMonster
+                .ReturnsAsync(new Pokemon
                 {
                     Name = name,
                     Description = "description",
@@ -109,14 +109,14 @@ namespace TL.Pokedex.Core.UnitTests
         }
 
         [Fact]
-        public async Task Is_Not_Translated_When_Error_Occurs()
+        public async Task Is_Not_Translated_When_TranslationError_Occurs()
         {
             // Arrange
             const string name = "mewtwo";
 
-            _mocker.GetMock<IPocketMonsterRepository>()
+            _mocker.GetMock<IPokemonRepository>()
                 .Setup(x => x.GetAsync(name))
-                .ReturnsAsync(new PocketMonster
+                .ReturnsAsync(new Pokemon
                 {
                     Name = name,
                     Description = "description",

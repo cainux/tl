@@ -1,6 +1,6 @@
 ﻿namespace TL.Pokedex.Core.Entities
 {
-    public class PocketMonster
+    public class Pokemon
     {
         public string Name { get; set; }
         public string Description { get; set; }
