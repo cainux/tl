@@ -20,12 +20,12 @@ namespace TL.Pokedex.Core.UnitTests
             _mocker = new AutoMocker();
             SUT = _mocker.CreateInstance<PokemonService>();
 
-            _mocker.GetMock<IYoda>()
-                .Setup(x => x.GetTranslationAsync(It.IsAny<string>()))
+            _mocker.GetMock<ITranslationService>()
+                .Setup(x => x.GetTranslationAsync("yoda", It.IsAny<string>()))
                 .ReturnsAsync("description translated by Yoda");
 
-            _mocker.GetMock<IWilliamShakespeare>()
-                .Setup(x => x.GetTranslationAsync(It.IsAny<string>()))
+            _mocker.GetMock<ITranslationService>()
+                .Setup(x => x.GetTranslationAsync("shakespeare", It.IsAny<string>()))
                 .ReturnsAsync("description translated by Shakespeare");
         }
 
@@ -124,8 +124,8 @@ namespace TL.Pokedex.Core.UnitTests
                     IsLegendary = false
                 });
 
-            _mocker.GetMock<IWilliamShakespeare>()
-                .Setup(x => x.GetTranslationAsync(It.IsAny<string>()))
+            _mocker.GetMock<ITranslationService>()
+                .Setup(x => x.GetTranslationAsync(It.IsAny<string>(), It.IsAny<string>()))
                 .Throws<TranslationException>();
 
             // Act

@@ -11,15 +11,13 @@ namespace TL.Pokedex.Core.Services
     public class PokemonService : IPokemonService
     {
         private readonly IPokemonRepository _repository;
-        private readonly IYoda _yoda;
-        private readonly IWilliamShakespeare _williamShakespeare;
+        private readonly ITranslationService _translationService;
         private readonly ILogger<PokemonService> _logger;
 
-        public PokemonService(IPokemonRepository repository, IYoda yoda, IWilliamShakespeare williamShakespeare, ILogger<PokemonService> logger)
+        public PokemonService(IPokemonRepository repository, ITranslationService translationService, ILogger<PokemonService> logger)
         {
             _repository = repository;
-            _yoda = yoda;
-            _williamShakespeare = williamShakespeare;
+            _translationService = translationService;
             _logger = logger;
         }
 
@@ -37,21 +35,21 @@ namespace TL.Pokedex.Core.Services
                 return null;
             }
 
+            var translatorName = Translators.Shakespeare;
+
+            if (string.Equals(monster.Habitat, "cave", StringComparison.InvariantCultureIgnoreCase)
+                || monster.IsLegendary)
+            {
+                translatorName = Translators.Yoda;
+            }
+
             try
             {
-                if (string.Equals(monster.Habitat, "cave", StringComparison.InvariantCultureIgnoreCase)
-                    || monster.IsLegendary)
-                {
-                    monster.Description = await _yoda.GetTranslationAsync(monster.Description);
-                }
-                else
-                {
-                    monster.Description = await _williamShakespeare.GetTranslationAsync(monster.Description);
-                }
+                monster.Description = await _translationService.GetTranslationAsync(translatorName, monster.Description);
             }
             catch (TranslationException e)
             {
-                _logger.LogWarning(e, "Error occurred when getting translation for {Pokémon}", name);
+                _logger.LogWarning(e, "Error occurred when getting translation from {TranslatorName} for {Pokemon}", translatorName, name);
             }
 
             return monster;
