@@ -142,6 +142,31 @@ namespace TL.Pokedex.Core.UnitTests
         }
 
         [Fact]
+        public async Task Returns_Pokemon_When_Name_Is_Cased_Differently()
+        {
+            // Arrange
+            const string name = "MewtwO";
+
+            _mocker.GetMock<IPokemonRepository>()
+                .Setup(x => x.GetAsync("mewtwo"))
+                .ReturnsAsync(new Pokemon
+                {
+                    Name = name,
+                    Description = "description"
+                });
+
+            // Act
+            var actual = await SUT.GetTranslatedAsync(name);
+
+            // Assert
+            actual.Should().BeEquivalentTo(new
+            {
+                Name = name,
+                Description = "description translated by Shakespeare"
+            });
+        }
+
+        [Fact]
         public async Task Returns_Null_When_Not_Found()
         {
             // Arrange

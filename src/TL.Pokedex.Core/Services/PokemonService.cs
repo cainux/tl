@@ -23,12 +23,12 @@ namespace TL.Pokedex.Core.Services
 
         public async Task<Pokemon> GetAsync(string name)
         {
-            return await _repository.GetAsync(name);
+            return await _repository.GetAsync(name.ToLowerInvariant());
         }
 
         public async Task<Pokemon> GetTranslatedAsync(string name)
         {
-            var monster = await _repository.GetAsync(name);
+            var monster = await _repository.GetAsync(name.ToLowerInvariant());
 
             if (monster == null)
             {
