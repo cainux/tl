@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TL.Pokedex.Core.Interfaces;
-using TL.Pokedex.Core.Services;
 
 namespace TL.Pokedex.WebApi
 {

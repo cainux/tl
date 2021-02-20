@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using Moq.AutoMock;
-using TL.Pokedex.Core.Entities;
 using TL.Pokedex.Core.Interfaces;
 using Xunit;
 using Xunit.Abstractions;
